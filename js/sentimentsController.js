@@ -10,7 +10,7 @@ function SentimentsController($http) {
    self.newSentiment={};
    self.addSentiment= addSentiment;
 
-   $http.get("https://genesiswatson.herokuapp.com/sentiments")
+   $http.get("http://localhost:3000/sentiments")
    .then(function(response) {
      self.all = response.data.allSentiments;
      console.log(self.all);
@@ -21,20 +21,23 @@ function SentimentsController($http) {
    //post report method need to store _id from response
    function addSentiment(){
     $http
-      .post('https://genesiswatson.herokuapp.com/sentiments', self.newSentiment)
+      .post('http://localhost:3000/sentiments', self.newSentiment, console.log(self.newSentiment))
       .then(function(response){
         self.all.push(response.data.sentiment);
 
         self.newGift = {};
-          $http.get('https://genesiswatson.herokuapp.com/sentiments')
+          $http.get('http://localhost:3000/sentiments')
           .then(function(response){
             self.all = response.data.allSentiments;
           }, function(error){
             console.log(error)
+            return;
           });
 
     }, function(error){
+
       console.log(error)
+      return;
     });
    }
 

@@ -98,7 +98,7 @@
                 <h1>Sentiment Results</h1>
                 <p>Results Will Appear Here after successful API call to watson discovery public news service</p>
 
-                <div ng-repeat="sentiment in sentimentsCtrl.all">
+                <div ng-repeat="sentiment in sentimentsCtrl.all | orderBy:'+':true">
                     <h4 class="text-left">Company: {{sentiment.company}}</h4>
                     <h4 class="text-left">Count: {{sentiment.count}}</h4>
                     <h4 class="text-left">Score: {{sentiment.score}}</h4>
