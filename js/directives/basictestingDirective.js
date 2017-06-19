@@ -1,0 +1,5 @@
+angular.module('WatsonApp').directive("basictestingDirective", function() {
+    return {
+        template:`<div class="panel panel-default"><div class="panel-body"><h1> Basic Testing Interface </h1><form id="newSite" ng-submit="sentimentsCtrl.addSentiment()"><div><label for="company">Company ex. Microsoft</label><input type="text" ng-model="sentimentsCtrl.newSentiment.company" name="company"></div><div><label for="count">Count of documents to process ex: 5</label><input type="text" ng-model="sentimentsCtrl.newSentiment.count" name="count"></div><div class="text-center"><input type="submit" value="Add Sentiment" class="btn btn-success"></div><br><br><br><br></form><div class="jumbotron"><h1>Sentiment Results</h1><p>Results Will Appear Here after successful API call to watson discovery public news service</p><div ng-repeat="sentiment in sentimentsCtrl.all | orderBy:'+':true"><h4 class="text-left">Company: {{sentiment.company}}</h4><h4 class="text-left">Available Elements: {{sentiment.count}}</h4><h4 class="text-left">Scores: {{sentiment.score}}</h4><h4 class="text-left">Title: {{sentiment.response}}</h4><hr></div></div></div></div>`
+        };
+});
