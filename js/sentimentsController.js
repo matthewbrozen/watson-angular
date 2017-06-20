@@ -24,8 +24,7 @@ function SentimentsController($http) {
       .post('https://genesiswatson.herokuapp.com/sentiments', self.newSentiment, console.log(self.newSentiment))
       .then(function(response){
         self.all.push(response.data.sentiment);
-
-        self.newGift = {};
+        self.newSentiment = {};
           $http.get('https://genesiswatson.herokuapp.com/sentiments')
           .then(function(response){
             self.all = response.data.allSentiments;
